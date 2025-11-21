@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Online Enrollment</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+        }
+
+        .card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            border-radius: 16px 16px 0 0 !important;
+            padding: 1.5rem;
+            border: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+        }
+
+        .btn-info {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e0e0e0;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #667eea;
+            box-shadow: none;
+        }
+
+        .table {
+            --bs-table-bg: transparent;
+            --bs-table-border-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .table-hover > tbody > tr:hover {
+            --bs-table-accent-bg: rgba(102, 126, 234, 0.05);
+        }
+
+        .table thead th {
+            border-top: none;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+        }
+
+        h2,
+        h3,
+        h4 {
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .badge {
+            font-weight: 600;
+            padding: 0.5em 0.8em;
+            border-radius: 10px;
+        }
+
+        .row.justify-content-center {
+            margin-top: 3rem !important;
+        }
+
+        .d-inline {
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+
+        .btn-lg {
+            padding: 0.75rem 2rem;
+            font-size: 1.1rem;
+        }
+
+        .card-body p {
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .card-body p strong {
+            color: #667eea;
+        }
+
+        .table-striped > tbody > tr:nth-child(odd) {
+            background-color: rgba(102, 126, 234, 0.03);
+        }
+
+        @media (max-width: 768px) {
+            .row.justify-content-center {
+                margin-top: 1rem !important;
+            }
+
+            .card-header {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+    <div class="container py-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
