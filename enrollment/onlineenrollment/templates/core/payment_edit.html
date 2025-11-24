@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Edit Payment{% endblock %}
+{% block content %}
+<div class="content-card">
+    <h4>Edit Payment: {{ payment.reference }}</h4>
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Payer Name</label>
+                {{ form.name }}
+                {% if form.name.errors %}<div class="text-danger small">{{ form.name.errors }}</div>{% endif %}
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Reference #</label>
+                {{ form.reference }}
+                {% if form.reference.errors %}<div class="text-danger small">{{ form.reference.errors }}</div>{% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Payment Method</label>
+                {{ form.method_payment }}
+                {% if form.method_payment.errors %}<div class="text-danger small">{{ form.method_payment.errors }}</div>{% endif %}
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Contact Number</label>
+                {{ form.contact_no }}
+                {% if form.contact_no.errors %}<div class="text-danger small">{{ form.contact_no.errors }}</div>{% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Payment Password/PIN</label>
+                {{ form.password }}
+                {% if form.password.errors %}<div class="text-danger small">{{ form.password.errors }}</div>{% endif %}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Update Payment</button>
+        <a href="{% url 'student_payment' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

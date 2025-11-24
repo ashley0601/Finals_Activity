@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}Payments{% endblock %}
+{% block content %}
+<div class="content-card">
+    <h4>Add New Payment</h4>
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Payer Name</label>
+                <input type="text" class="form-control" name="name" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Reference #</label>
+                <input type="text" class="form-control" name="reference" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Payment Method</label>
+                <select class="form-control" name="method_payment" required>
+                    <option>Cash</option><option>Bank Transfer</option><option>Online Payment</option><option>Check</option>
+                </select>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Contact Number</label>
+                <input type="text" class="form-control" name="contact_no" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Payment Password/PIN</label>
+                <input type="password" class="form-control" name="password" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Add Payment</button>
+    </form>
+</div>
+
+<div class="content-card">
+    <h4>Payment History</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Reference #</th><th>Payer Name</th><th>Method</th><th>Contact</th><th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for payment in payments %}
+            <tr>
+                <td>{{ payment.reference }}</td>
+                <td>{{ payment.name }}</td>
+                <td>{{ payment.method_payment }}</td>
+                <td>{{ payment.contact_no }}</td>
+                <td><a href="{% url 'payment_edit' payment.id %}" class="btn btn-sm btn-warning">Edit</a></td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="5" class="text-center">No payments recorded</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

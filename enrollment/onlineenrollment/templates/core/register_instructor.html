@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Instructor Registration</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        font-family: "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+      .card {
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.95);
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        width: 100%;
+        max-width: 650px;
+      }
+      .card-header {
+        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        border: none;
+        color: #fff;
+        padding: 2.5rem;
+        text-align: center;
+      }
+      .card-header h3 {
+        font-weight: 700;
+        font-size: 1.8rem;
+        margin: 0;
+      }
+      .card-body {
+        padding: 2.5rem;
+      }
+      .form-group {
+        margin-bottom: 1.8rem;
+        position: relative;
+      }
+      .form-control,
+      select.form-control {
+        border: 2px solid #e0e0e0;
+        border-radius: 12px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        height: 55px;
+        background-color: #fff;
+      }
+      .form-control:focus {
+        border-color: #f093fb;
+        box-shadow: 0 0 0 3px rgba(240, 147, 251, 0.1);
+        outline: none;
+      }
+      /* Fix for select - label always floated */
+      select.form-control + label {
+        top: -10px !important;
+        left: 10px;
+        font-size: 0.85rem;
+        background: #fff;
+        padding: 0 5px;
+        color: #74dda0;
+        font-weight: 600;
+      }
+      .form-control:placeholder-shown + label {
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1rem;
+        color: #999;
+      }
+      .form-control:focus + label,
+      .form-control:not(:placeholder-shown) + label {
+        top: -10px;
+        left: 10px;
+        font-size: 0.85rem;
+        background: #fff;
+        padding: 0 5px;
+        color: #74dda0;
+        font-weight: 600;
+      }
+      label {
+        position: absolute;
+        top: -10px;
+        left: 10px;
+        font-size: 0.85rem;
+        background: #fff;
+        padding: 0 5px;
+        color: #74dda0;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        pointer-events: none;
+      }
+      .btn-warning {
+        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        border: none;
+        border-radius: 50px;
+        padding: 1rem 2rem;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        color: #fff !important;
+      }
+      .btn-warning:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(240, 147, 251, 0.4);
+      }
+      select.form-control {
+        -webkit-appearance: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23f093fb' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        background-size: 16px;
+        cursor: pointer;
+      }
+      .btn-block {
+        display: block;
+        width: 100%;
+      }
+      @media (max-width: 768px) {
+        body {
+          padding: 1rem;
+        }
+        .card-header,
+        .card-body {
+          padding: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="card-header">
+        <h3>Instructor Registration</h3>
+      </div>
+      <div class="card-body">
+        <form method="post">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="first_name"
+                placeholder=" "
+                required
+              />
+              <label>First Name</label>
+            </div>
+            <div class="col-md-6 form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="last_name"
+                placeholder=" "
+                required
+              />
+              <label>Last Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="username"
+                placeholder=" "
+                required
+              />
+              <label>Username</label>
+            </div>
+            <div class="col-md-6 form-group">
+              <input
+                type="text"
+                class="form-control"
+                name="id_course"
+                placeholder=" "
+                required
+              />
+              <label>Course ID</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              placeholder=" "
+              required
+            />
+            <label>Email Address</label>
+          </div>
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                placeholder=" "
+                required
+              />
+              <label>Password</label>
+            </div>
+            <div class="col-md-6 form-group">
+              <select class="form-control" name="gender" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+              <label>Gender</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              name="subjects"
+              placeholder=" "
+              required
+            />
+            <label>Subject</label>
+          </div>
+          <button type="submit" class="btn btn-warning btn-block">
+            Create Account & Login
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
